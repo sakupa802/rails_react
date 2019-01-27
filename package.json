@@ -3,9 +3,14 @@
   "private": true,
   "dependencies": {
     "@rails/webpacker": "3.5",
+    "apollo-boost": "^0.1.27",
     "babel-preset-react": "^6.24.1",
+    "graphql": "^14.1.1",
+    "graphql-tag": "^2.10.1",
+    "jQuery": "^1.7.4",
     "prop-types": "^15.6.2",
     "react": "^16.7.0",
+    "react-apollo": "^2.4.0",
     "react-dom": "^16.7.0"
   },
   "devDependencies": {
