@@ -7,6 +7,8 @@
     "babel-preset-react": "^6.24.1",
     "graphql": "^14.1.1",
     "graphql-tag": "^2.10.1",
+    "hypernova": "^2.5.0",
+    "hypernova-react": "^2.1.0",
     "jQuery": "^1.7.4",
     "prop-types": "^15.6.2",
     "react": "^16.7.0",

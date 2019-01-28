@@ -2,9 +2,12 @@
 // like app/views/layouts/application.html.erb. All it does is render <div>Hello React</div> at the bottom
 // of the page.
 
-import React from 'react'
+import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
+
+import gql from "graphql-tag"
+import { Query } from 'react-apollo'
 
 const Hello = props => (
   <div>Hello {props.name}!</div>
@@ -18,9 +21,12 @@ Hello.propTypes = {
   name: PropTypes.string
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  ReactDOM.render(
-    <Hello name="React" />,
-    document.body.appendChild(document.createElement('div')),
-  )
-})
+export default class Home extends Component {
+  render() {
+    return (
+      <div>
+        <Hello name="React!!!" />
+      </div>
+    )
+  }
+}

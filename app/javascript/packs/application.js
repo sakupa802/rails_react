@@ -7,10 +7,28 @@
 // To reference this file, add <%= javascript_pack_tag 'application' %> to the appropriate
 // layout file, like app/views/layouts/application.html.erb
 
-import gql from "graphql-tag"
+import React from 'react'
+import ReactDOM from 'react-dom'
+import PropTypes from 'prop-types'
+
 import { Query } from 'react-apollo'
 import ApolloClient from "apollo-boost"
-import $ from "jQuery"
+import gql from "graphql-tag"
+import Home from './Home'
+
+const tokenElement = document.querySelector('meta[name="csrf-token"]')
+const token = tokenElement && tokenElement.getAttribute("content")
+
+const client = new ApolloClient({
+  uri: '/graphql',
+  request: operation => {
+    operation.setContext({
+      headers: { 
+        'X-CSRF-Token': token, 
+      }
+    })
+  }
+})
 
 const query = gql`
 {
@@ -21,21 +39,14 @@ const query = gql`
 }
 `
 
-const client = new ApolloClient({
-  uri: '/graphql',
-  request: operation => {
-    operation.setContext({
-      headers: { 
-        'X-CSRF-Token': $("meta[name=csrf-token]").attr("content"), 
-      }
-    })
-  }
-})
-
 client.query({
   query
 })
 .then(result => console.log(result))
 
-
-require('./hello_react.jsx')
+document.addEventListener('DOMContentLoaded', () => {
+  ReactDOM.render(
+    <Home />,
+    document.body.appendChild(document.createElement('div')),
+  )
+})
